@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Market Web App</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="container">
+    <h1>Stock Market Web App</h1>
+    <div id="input-container">
+      <label for="companies">Select a company:</label>
+      <select id="companies">
+        <!-- Add options here for the available companies -->
+        <option value="Apple Inc(AAPL)">Apple Inc(AAPL)</option>
+        <option value="Microsoft Corp(MSFT)">Microsoft Corp(MSFT)</option>
+        <option value="Nike Inc(NKE)">Nike Inc(NKE)</option>
+      </select>
+      <button id="get_data" onclick="getData()">Get Data</button>
+    </div>
+    <div id="loading_container" style="display: none;">
+      <p>Loading data...</p>
+    </div>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div id="table_container"></div>
+    <button id="download_data" onclick="download()" style="display: none;">Download Data</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="stock.js"></script>
+  <script>
+    // Function to generate additional stock options
+    function generateStockOptions() {
+      var select = document.getElementById("companies");
+      var stocks = [
+        { symbol: "Google", name: "Alphabet Inc(GOOG)" },
+        { symbol: "Facebook", name: "Facebook Inc(FB)" },
+        { symbol: "Amazon", name: "Amazon.com Inc(AMZN)" },
+        { symbol: "Tesla", name: "Tesla, Inc. (TSLA)" },
+      { symbol: "Netflix", name: "Netflix, Inc. (NFLX)" },
+      { symbol: "Intel", name: "Intel Corporation (INTC)" },
+      { symbol: "Adobe", name: "Adobe Inc. (ADBE)" },
+      { symbol: "Salesforce", name: "Salesforce.com, Inc. (CRM)" },
+      { symbol: "Visa", name: "Visa Inc. (V)" },
+      { symbol: "Mastercard", name: "Mastercard Incorporated (MA)" },
+      { symbol: "IBM", name: "International Business Machines Corporation (IBM)" },
+      { symbol: "Walmart", name: "Walmart Inc. (WMT)" },
+      { symbol: "Coca-Cola", name: "The Coca-Cola Company (KO)" },
+      { symbol: "Pfizer", name: "Pfizer Inc. (PFE)" },
+      { symbol: "Johnson & Johnson", name: "Johnson & Johnson (JNJ)" },
+      { symbol: "Procter & Gamble", name: "Procter & Gamble Company (PG)" },
+      { symbol: "General Electric", name: "General Electric Company (GE)" }
+        // Add more stocks here
+      ];
+
+      stocks.forEach(function(stock) {
+        var option = document.createElement("option");
+        option.value = stock.name;
+        option.textContent = stock.symbol;
+        select.appendChild(option);
+      });
+    }
+
+    // Call the function to generate stock options
+    generateStockOptions();
+    </script>
+</body>
+</html>
